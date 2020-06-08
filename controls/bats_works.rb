@@ -30,13 +30,11 @@ control 'core-plans-bats' do
     its('exit_status') { should eq 0 }
     its('stdout') { should_not be_empty }
     its('stdout') { should match /Bats\s+#{bats_pkg_ident.split('/')[5]}/ }
-    its('stderr') { should be_empty }
   end
 
   describe command("#{bats_pkg_ident}/bin/bats --help") do
     its('exit_status') { should eq 0 }
     its('stdout') { should_not be_empty }
     its('stdout') { should match /Bats\s+#{bats_pkg_ident.split('/')[5]}/ }
-    its('stderr') { should be_empty }
   end
 end
