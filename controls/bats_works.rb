@@ -2,7 +2,6 @@ title 'Tests to confirm bats works as expected'
 
 plan_name = input('plan_name', value: 'bats')
 plan_ident = "#{ENV['HAB_ORIGIN']}/#{plan_name}"
-hab_path = input('hab_path', value: '/tmp/hab')
 
 control 'core-plans-bats' do
   impact 1.0
@@ -19,7 +18,7 @@ control 'core-plans-bats' do
     Bats 0.4.0
     ...
   '
-  bats_pkg_ident = command("#{hab_path} pkg path #{plan_ident}")
+  bats_pkg_ident = command("hab pkg path #{plan_ident}")
   describe bats_pkg_ident do
     its('exit_status') { should eq 0 }
     its('stdout') { should_not be_empty }
